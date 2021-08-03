@@ -1,7 +1,33 @@
-<div class="container general container">
+<div class="row general-container">
     <div class="col-6 container-card">
         <mat-card>
-            <p>estoy dentro de una card de material</p>
+            <div class="container container-form">
+                <div class="col-12">
+                    <h2>Login</h2>
+                </div>
+                <form [formGroup]="checkoutLoginForm" (ngSubmit)="onLogin(checkoutLoginForm.value)" class="login-form">
+                    <div class="col-12">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ingrese su email</mat-label>
+                            <input matInput required formControlName="email">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ingrese su contraseña</mat-label>
+                            <input type="password" matInput required formControlName="password">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <button mat-raised-button color="primary" *ngIf="!loading" type="submit" [disabled]="checkoutLoginForm.invalid">Iniciar Sesion</button>
+                        <button mat-raised-button color="primary" *ngIf="loading">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="visually-hidden"></span>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </mat-card>
     </div>
 </div>
